@@ -12,6 +12,10 @@ show diff in WAL
 
 \i walshow.sql
 
+\i walset.sql
+
+\i walshow.sql
+
 \! clear
 
 \echo
@@ -61,9 +65,13 @@ delete from pt where id < 10000 ;
 \! read abc
 
 
-\echo 
+\set ECHO all 
 
-drop table pt_2 ; 
+drop table pt_2 ;   /* in PG you drop the table that represents the partition */
+
+\set ECHO none
+
+\echo
 
 \i walshow.sql 
 
