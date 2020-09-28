@@ -35,7 +35,7 @@ analyze pt ;
 
 
 \echo
-\echo We have an index on field Active, let's select some...
+\echo We have an index on field Active, let us select some...
 \echo
 
 \! read abc
@@ -69,6 +69,7 @@ where active = 'Y'
 
 \! read abc
 
+\! clear
 
 \echo
 \echo
