@@ -11,6 +11,7 @@ on demos, the aim is to demo side by side, Oracle and PostgreSQL, and in future 
 
 notes to run - lsumilar to oracle demo:
 pg_demp_part.sql : re-creates the tables T and PT.
+
 pg_demo_part_0.sql : demo the delete + drop and show less redo.
 
 pg_demo_0a: global and local index: not yet in PG ??
