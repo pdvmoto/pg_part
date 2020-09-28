@@ -6,8 +6,10 @@ demo_sum: summation over table or partition.
 
 \set ECHO none
 
-/* tweak to avoid index-scan  */
-alter table t drop constraint  t_pk ; 
+/* tweaks to avoid index-scan  */
+alter table t drop constraint  t_pk ;  
+analyze t;
+analyzt pt; 
 
 \! clear 
 
