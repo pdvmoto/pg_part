@@ -76,9 +76,10 @@ where active = 'Y'
 \echo Main Point Made:
 \echo
 \echo
-\echo (Local) Indexes _Can_lead to a lot of looping
+\echo (Local) Indexes _Can_ lead to a lot of looping
 \echo
 \echo Global Index _might be_  more efficient.
+\echo But PostgreSQL doesnt have Global Indexes (yet), luckily (?)
 \echo
 \echo
 \echo Consequences... ?
