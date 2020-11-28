@@ -109,9 +109,8 @@ select
 , case mod ( rownum+1, 10000 )  when 0 then 'Y' else 'N' end  as active
 , mod ( rownum, 10000 ) / 100                                 as amount
 , ( current_date - rownum )                                   as dt
--- ,  rpad ( fnNumberToWords ( rownum ), 198)                    as payload
-,  rpad ( 'abc' , 198)                                        as payload
-,  rpad ( '[ ', 740 ) || ']'                                  as  filler 
+, rpad ( 'abc' , 198)                                         as payload
+, rpad ( '[ ', 740 ) || ']'                                   as filler 
 from ( select generate_series ( 0, 39999 ) as rownum ) as src ; 
 
 \echo 
