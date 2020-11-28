@@ -14,7 +14,7 @@
 \set ECHO none
 
 drop index pt_li_a ;
-drop index pt_gi_a ;
+drop index  t_gi_a ;
 
 
 \! clear
@@ -27,18 +27,60 @@ drop index pt_gi_a ;
 
 \set ECHO all
 
-create index pt_gi_a on pt ( active ) ;
+create index pt_li_a on pt ( active ) ;
 
 analyze pt ;
 
+\echo
+
+create index  t_gi_a on  t ( active ) ;
+
+analyze  t ;
+
 \set ECHO none
 
-
 \echo
-\echo We have an index on field Active, let us select some...
+\echo We have an index on field Active, let us select some,
+\echo both from the conventional table and from the partitioned table.
 \echo
 
 \! read abc
+
+\! clear
+
+\set ECHO all
+
+select id, active 
+from  T 
+where active = 'Y' 
+;
+
+\set ECHO none
+
+\echo
+\echo we selected 4 records, hopefully it used our index...
+\echo
+
+\! read abc
+
+\set ECHO all
+
+explain 
+select id, active 
+from  T 
+where active = 'Y' 
+;
+
+\set ECHO none
+
+\echo
+\echo notice the use of the index, the cost.
+\echo now let us try this from the partitioned table...
+\echo
+
+\! read abc
+
+\! clear 
 
 \set ECHO all
 
@@ -79,6 +121,7 @@ where active = 'Y'
 \echo (Local) Indexes _Can_ lead to a lot of looping
 \echo
 \echo Global Index _might be_  more efficient.
+\echo 
 \echo But PostgreSQL doesnt have Global Indexes (yet), luckily (?)
 \echo
 \echo
@@ -90,11 +133,10 @@ where active = 'Y'
 \echo
 \echo Hence,   All SQL must have some "Partition Key Limit"
 \echo
-\echo This Means: Design of Application with Partitioning in mind.
+\echo On Large Volumes, with many partitions, This Counts
 \echo
+\echo This Means: Design the Application with Partitioning in mind.
 \echo
 \echo ... return to ppt...
 \echo
-
-
 
