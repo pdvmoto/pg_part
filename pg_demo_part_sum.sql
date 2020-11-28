@@ -23,6 +23,8 @@ analyzt pt;
 
 \! read abc
 
+\! clear
+
 \echo 
 
 \set ECHO all
@@ -45,7 +47,10 @@ order by 1
 
 \! read abc
 
-explain select trunc ( id / 10000 ) as range
+\set ECHO all
+
+explain 
+select trunc ( id / 10000 ) as range
      , count (*) as nr_items, sum (amount)    as sumtotal
 from T
 where id between 10000 and 19999
@@ -64,12 +69,13 @@ order by 1
 
 \! read abc
 
+\! clear 
 
-select 'now for the partitions' as next_test ; 
+\echo 
+\echo Now for the partitions... 
 
 \echo
 \set ECHO all
-
 
 select trunc ( id / 10000 ) as range
      , count (*) as nr_items, sum (amount)    as sumtotal
@@ -89,7 +95,10 @@ order by 1
 
 \! read abc
 
-explain select trunc ( id / 10000 ) as range
+\set ECHO all
+
+explain 
+select trunc ( id / 10000 ) as range
      , count (*) as nr_items, sum (amount)    as sumtotal
 from PT
 where id between 10000 and 19999
@@ -97,6 +106,7 @@ group by trunc(id / 10000)
 order by 1
 ;
 
+\set ECHO none
 
 \echo
 \echo Optimizer knows it only needs to scan 1 partitions, check the cost now...

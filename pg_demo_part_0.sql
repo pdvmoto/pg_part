@@ -19,7 +19,7 @@ show diff in WAL
 \! clear
 
 \echo
-\echo [ What we will do : delete-from-T, delete from PT, and Drop Partition. ]
+\echo [ What we will do : delete from T, delete from PT, and Drop Partition. ]
 \echo
 \echo Hit enter to continue...
 \echo 

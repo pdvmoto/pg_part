@@ -34,9 +34,11 @@ create table pt
 , payload           varchar ( 200 )   -- some text 
 , filler            varchar ( 750 )   -- some data to create 1K recordsize
 )
-partition by range ( id ) ;
+partition by range ( id ) 
+;
 
-alter table pt add constraint pt_pk primary key ( id ) ;
+alter table pt add constraint pt_pk primary key ( id ) 
+;
 
 \set ECHO none
 
@@ -50,13 +52,17 @@ alter table pt add constraint pt_pk primary key ( id ) ;
 
 \set ECHO all
 
-create table pt_1 partition of pt for values from (     0 ) to ( 10000 ) ;
+create table pt_1 partition of pt for values from (     0 ) to ( 10000 ) 
+;
 
-create table pt_2 partition of pt for values from ( 10000 ) to ( 20000 ) ;
+create table pt_2 partition of pt for values from ( 10000 ) to ( 20000 ) 
+;
 
-create table pt_3 partition of pt for values from ( 20000 ) to ( 30000 ) ;
+create table pt_3 partition of pt for values from ( 20000 ) to ( 30000 ) 
+;
 
-create table pt_4 partition of pt for values from ( 30000 ) to ( 40000 ) ;
+create table pt_4 partition of pt for values from ( 30000 ) to ( 40000 ) 
+;
 
 \set ECHO none
 
@@ -81,9 +87,11 @@ create table t
 , dt                timestamp         -- some date, case we want history stuff
 , payload           varchar ( 200 )   -- some text 
 , filler            varchar ( 750 )   -- some data to create 1K recordsize
-);
+)
+;
 
-alter table t add constraint t_pk primary key ( id ) ;
+alter table t add constraint t_pk primary key ( id ) 
+;
 
 \set ECHO none
 
@@ -119,7 +127,7 @@ insert into pt select * from t ;
 
 \echo 
 
--- to compare, add same indexes as on oracle tables..
+-- to compare, add same indexes as on other tables..
 create index pt_li_pay on pt ( payload, filler, amount) ;
 create index  t_i_pay  on  t ( payload, filler, amount) ;
 

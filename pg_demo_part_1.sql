@@ -48,6 +48,7 @@ analyze  t ;
 
 \! clear
 
+\echo 
 \set ECHO all
 
 select id, active 
@@ -63,6 +64,8 @@ where active = 'Y'
 
 \! read abc
 
+\! clear 
+\echo 
 \set ECHO all
 
 explain 
@@ -82,6 +85,7 @@ where active = 'Y'
 
 \! clear 
 
+\echo 
 \set ECHO all
 
 select id, active 
@@ -97,12 +101,18 @@ where active = 'Y'
 
 \! read abc
 
+\! clear
+
+\echo
+\set ECHO all
+
 explain 
 select id, active 
 from PT 
 where active = 'Y' 
 ;
 
+\set ECHO none
 
 \echo
 \echo notice that we have to scan 4 indexes,
