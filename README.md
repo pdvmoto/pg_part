@@ -23,4 +23,4 @@ pg_demo_part_pk.sql : show how a PK can be both date + sequence?
     Show size of integer... 
 
 
-needs more work
+needs more workcheck
