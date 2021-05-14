@@ -88,10 +88,12 @@ drop table pt_2 ;   /* in PG you drop the table that represents the partition */
 \echo We have seen:
 \echo - delete 10K records from Conventional table; ___________  549 K redo.
 \echo - delete 10K records from Partitioned table, 1 partition;  549 K redo.
-\echo - remove 1 Partition with 10K records; ____________________ 20 K redo..
+\echo - remove 1 Partition with 10K records; ____________________  5 K redo..
 \echo
 
 \echo Bonus Question (homework!) Will WAL volume increase when dropping Large Partition ?
+
+\! read abc
 
 \! clear 
 
