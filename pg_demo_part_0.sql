@@ -97,10 +97,11 @@ drop table pt_2 ;   /* you drop the table that represents the partition */
 
 \echo 
 \echo We have seen:
+\echo
 \echo - delete 10K records from Conventional table; ___________  549 K WAL.
 \echo - delete 10K records from Partitioned table, 1 partition;  549 K WAL.
 \echo - remove 1 Partition with 10K records; ____________________  5 K WAL..
-\echo
+\echo 
 \echo 
 \echo Bonus Question (homework!) Will WAL volume increase when dropping Large Partition ?
 \echo
