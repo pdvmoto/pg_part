@@ -49,17 +49,25 @@ alter table pt add constraint pt_pk primary key ( id )
 \echo 
 
 \! read abc
+\! clear 
+
+\echo
+\echo Adding the partitions...
+\echo
 
 \set ECHO all
 
 create table pt_1 partition of pt for values from (     0 ) to ( 10000 ) 
 ;
 
+
 create table pt_2 partition of pt for values from ( 10000 ) to ( 20000 ) 
 ;
 
+
 create table pt_3 partition of pt for values from ( 20000 ) to ( 30000 ) 
 ;
+
 
 create table pt_4 partition of pt for values from ( 30000 ) to ( 40000 ) 
 ;

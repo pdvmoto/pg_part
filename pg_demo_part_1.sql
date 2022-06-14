@@ -135,6 +135,7 @@ where active = 'Y'
 \echo But PostgreSQL doesnt have Global Indexes (yet), luckily (?)
 \echo
 \echo
+\echo
 \echo Consequences... ?
 \echo
 \echo IF       you want to avoid "looping" over many partitions...

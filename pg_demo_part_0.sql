@@ -8,6 +8,10 @@ show diff in WAL
 
 \set ECHO none
 
+-- vacuum for good measure.
+vacuum; 
+vacuum; 
+
 \i walset.sql 
 
 \i walshow.sql
@@ -25,6 +29,8 @@ show diff in WAL
 \echo 
 
 \! read abc
+
+\! clear 
 
 \echo 
 
@@ -45,6 +51,8 @@ delete from T where id < 10000 ;
 
 \! read abc
 
+\! clear 
+
 \echo 
 
 \set ECHO all
@@ -64,10 +72,13 @@ delete from pt where id < 10000 ;
 
 \! read abc
 
+\! clear 
+
+\echo 
 
 \set ECHO all 
 
-drop table pt_2 ;   /* in PG you drop the table that represents the partition */
+drop table pt_2 ;   /* you drop the table that represents the partition */
 
 \set ECHO none
 
@@ -86,12 +97,15 @@ drop table pt_2 ;   /* in PG you drop the table that represents the partition */
 
 \echo 
 \echo We have seen:
-\echo - delete 10K records from Conventional table; ___________  549 K redo.
-\echo - delete 10K records from Partitioned table, 1 partition;  549 K redo.
-\echo - remove 1 Partition with 10K records; ____________________ 20 K redo..
+\echo - delete 10K records from Conventional table; ___________  549 K WAL.
+\echo - delete 10K records from Partitioned table, 1 partition;  549 K WAL.
+\echo - remove 1 Partition with 10K records; ____________________  5 K WAL..
+\echo
+\echo 
+\echo Bonus Question (homework!) Will WAL volume increase when dropping Large Partition ?
 \echo
 
-\echo Bonus Question (homework!) Will WAL volume increase when dropping Large Partition ?
+\! read abc
 
 \! clear 
 
@@ -104,8 +118,7 @@ drop table pt_2 ;   /* in PG you drop the table that represents the partition */
 \echo
 \echo DROP PARTITION Saves ...
 \echo
-\echo - Saves Redo-effort (logwriter, archiving, standby...)
-\echo
+\echo - Saves WAL-effort (writer, streams, replica, all less data to process...)
 \echo - Saves Time!
 \echo
 \echo
